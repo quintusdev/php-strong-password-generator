@@ -45,7 +45,7 @@
                                 <!-- Invoco la funzione per far visualizzare la password generata -->
                                 <?php if(isset($_GET['password']) && $_GET['password'] > 1 && $_GET['password'] <= 32) { ?>
                                     <h4><?php echo $result ?></h4>
-                                <?php } else if (isset($_GET['password']) !== ''){ ?>
+                                <?php } else if (isset($_GET['password']) && $_GET['password'] !== ''){ ?>
                                     <div class="alert alert-danger"><h6>"Attenzione! Lunghezza minima 1 e massima 32 caratteri."</h6></div>
                                 <?php } ?>
                             </div>
