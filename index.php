@@ -1,4 +1,5 @@
 <?php
+    /* Funzione per generare una password casuale */
     function randomPassword() {
         /* Prendo il valore della lunghezza inserito dall'utente */
         $passLength = $_GET['password'];
