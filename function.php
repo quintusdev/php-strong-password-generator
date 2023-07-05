@@ -18,7 +18,5 @@
             /* Converto l'array in una stringa */
             return implode($pass); 
         }
-
-        return '';
     }
 ?>

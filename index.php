@@ -2,9 +2,13 @@
     /* Collego il file FUNCTION con questo file */
     require __DIR__.'/function.php';
     /* Controllo che il valore di PASSWORD sia diverso da VUOTO e che non sia NULL */
+
+    /* Controllo se la chiave 'password' esiste nell'array $_GET */
     if(isset($_GET['password'])){
+        /* Prendo il valore della lunghezza inserito dall'utente */
         $result = randomPassword();
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +43,7 @@
                             <div class="form-group m-3">
                                 <label for="pswgen" class="mt-2">Password Generata: </label>
                                 <!-- Invoco la funzione per far visualizzare la password generata -->
-                                <?php if($_GET['password'] > 1 && $_GET['password']<= 32) { ?>
+                                <?php if(isset($_GET['password']) && $_GET['password'] > 1 && $_GET['password'] <= 32) { ?>
                                     <h4><?php echo $result ?></h4>
                                 <?php } else if (isset($_GET['password']) !== ''){ ?>
                                     <div class="alert alert-danger"><h6>"Attenzione! Lunghezza minima 1 e massima 32 caratteri."</h6></div>
