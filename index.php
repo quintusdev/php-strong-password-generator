@@ -1,21 +1,9 @@
 <?php
-    /* Funzione per generare una password casuale */
-    function randomPassword() {
-        /* Prendo il valore della lunghezza inserito dall'utente */
-        $passLength = $_GET['password'];
-        /* Dichiaro i  */
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@!$%&?';
-        /* Dichiaro $PASS come array */
-        $pass = array();
-        /* Imposto la lunghezza -1 */
-        $alphaLength = strlen($alphabet) - 1;
-        /* Ciclo FOR per generare casualmente ogni singolo carattere */
-        for ($i = 0; $i < $passLength; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
-        }
-        /* Converto l'array in una stringa */
-        return implode($pass); 
+    /* Collego il file FUNCTION con questo file */
+    require __DIR__.'/function.php';
+    /* Controllo che il valore di PASSWORD sia diverso da VUOTO e che non sia NULL */
+    if(isset($_GET['password'])){
+        $result = randomPassword();
     }
 ?>
 
@@ -51,16 +39,16 @@
                             <div class="form-group m-3">
                                 <label for="pswgen" class="mt-2">Password Generata: </label>
                                 <!-- Invoco la funzione per far visualizzare la password generata -->
-                                <?php if($_GET['password'] > 0 && $_GET['password']< 32) { ?>
-                                    <h4><?php echo randomPassword(); ?></h4>
-                                <?php } else { ?>
+                                <?php if($_GET['password'] > 1 && $_GET['password']<= 32) { ?>
+                                    <h4><?php echo $result ?></h4>
+                                <?php } else if (isset($_GET['password']) !== ''){ ?>
                                     <div class="alert alert-danger"><h6>"Attenzione! Lunghezza minima 1 e massima 32 caratteri."</h6></div>
                                 <?php } ?>
                             </div>
                             <!-- Bottoni per gestione dati -->
                             <div class="form-group m-3">
                                 <button type="submit" class="btn btn-sm btn-success mt-2">Genera</button>
-                                <button type="reset" class="btn btn-sm btn-danger mt-2">Reset</button>
+                                <button class="btn btn-sm btn-danger mt-2">Reset</button>
                             </div>
                         </form>
                     </div>
